@@ -1,0 +1,8 @@
+<resources>
+
+    <string name="app_name">RaceHUD</string>
+    <string name="stop">Stop</string>
+    <string name="initial_speed">-.-</string>
+    <string name="startRaceHUD">show stats</string>
+
+</resources>

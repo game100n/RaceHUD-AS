@@ -3,7 +3,7 @@ Speedometer app for GLASS with analog and digital display
 
 "Ok glass, Show stats"
 
-APK Download [Here](RaceHUD/RaceHUD.apk)
+APK Download [RaceHUD APK](https://github.com/game100n/RaceHUD-AS/blob/master/RaceHUD/RaceHUD.apk?raw=true)
  
 <h2>Permissions</h2>
 * GPS

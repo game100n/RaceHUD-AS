@@ -2,6 +2,7 @@
 Speedometer app for GLASS with analog and digital display
 
 "Ok glass, Show stats"
+APK Download [Here](RaceHUD/RaceHUD.apk)
  
 <h2>Permissions</h2>
 * GPS
@@ -17,5 +18,5 @@ Speedometer app for GLASS with analog and digital display
 <h3>Changes to make</h3>
 * Disable Screen Timeout when in view
 
-<h2>Changelog:</h2>
+<h2>ScreenShot</h2>
 ![alt tag](https://raw.github.com/game100n/RaceHUD-AS/master/RaceHUD Screenshot.png)

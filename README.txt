@@ -1,4 +1,6 @@
-SpeedHUD - Speedometer app for GLASS with analog and digital display
+RaceHUD - Speedometer app for GLASS with analog and digital display
+
+"Ok glass, Show stats"
 
 Permissions:
 - GPS

@@ -2,6 +2,8 @@ package com.RFR.glass.racehud;
 
 import android.content.Context;
 import android.graphics.Canvas;
+import android.graphics.Matrix;
+import android.graphics.RectF;
 import android.location.Location;
 import android.os.SystemClock;
 import android.util.Log;
@@ -44,9 +46,10 @@ public class RaceView implements SurfaceHolder.Callback
 
     /** For Animation */
     private final ImageView mNeedle;
-    private double SpeedtoAngle = 0.8888;
-    private int measuredWidth;
-    private int measuredHeight;
+    //private double SpeedtoAngle = 80/(90+42);
+    private double SpeedtoAngle = 0.60606;
+    private int NeedleRotateX = 214;
+    private int NeedleRotateY = 220;
 
     private final GPSManager mGPSManager;
 
@@ -76,12 +79,24 @@ public class RaceView implements SurfaceHolder.Callback
 		        double CurrentSpeedMPH = currentSpeed*2.23694;
 		        mSpeedView.setText(mSpeedFormat.format(CurrentSpeedMPH));
 
+                /**
                 RotateAnimation NeedleAngle = new RotateAnimation(
-                        (float) (CurrentSpeedMPH / SpeedtoAngle), (float) (CurrentSpeedMPH / SpeedtoAngle), (measuredWidth / 2), (measuredHeight / 2));
+                        (float) (CurrentSpeedMPH / SpeedtoAngle), (float) (CurrentSpeedMPH / SpeedtoAngle), NeedleRotateX, NeedleRotateY);
                 NeedleAngle.setDuration(1900);
                 NeedleAngle.setFillAfter(true);
                 mNeedle.startAnimation(NeedleAngle);
                 mNeedle.refreshDrawableState();
+                 */
+
+
+                Matrix matrix = mNeedle.getImageMatrix();
+                RectF dst = new RectF();
+                matrix.mapRect(dst, new RectF(mNeedle.getDrawable().getBounds()));
+                //Log.d("Test", "Dst " + dst);
+                RotateAnimation a = new RotateAnimation(
+                        (float) (CurrentSpeedMPH / SpeedtoAngle), (float) (CurrentSpeedMPH / SpeedtoAngle), dst.centerX(), dst.centerY());
+                a.setDuration(5000);
+                mNeedle.startAnimation(a);
 	        }
         }
     };
@@ -145,9 +160,9 @@ public class RaceView implements SurfaceHolder.Callback
          * Measure and update the layout so that it will take up the entire surface space
          * when it is drawn.
          */
-        measuredWidth = View.MeasureSpec.makeMeasureSpec(mSurfaceWidth,
+        int measuredWidth = View.MeasureSpec.makeMeasureSpec(mSurfaceWidth,
                 View.MeasureSpec.EXACTLY);
-        measuredHeight = View.MeasureSpec.makeMeasureSpec(mSurfaceHeight,
+        int measuredHeight = View.MeasureSpec.makeMeasureSpec(mSurfaceHeight,
                 View.MeasureSpec.EXACTLY);
 
         mLayout.measure(measuredWidth, measuredHeight);

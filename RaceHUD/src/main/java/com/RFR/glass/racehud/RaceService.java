@@ -59,7 +59,11 @@ public class RaceService extends Service
 
             /** Keep track of the callback to remove it before unpublishing */
             mCallback = new RaceView(this, mGPSManager);
-            mLiveCard.setDirectRenderingEnabled(true).getSurfaceHolder().addCallback(mCallback);
+            //mLiveCard.setDirectRenderingEnabled(true).getSurfaceHolder().addCallback(mCallback);
+
+            LiveCard cardON = mLiveCard.setDirectRenderingEnabled(true);
+            cardON.getSurfaceHolder().addCallback(mCallback);
+            cardON.getSurfaceHolder().setKeepScreenOn(true);
 
             /** Display the options menu when the live card is tapped */
             Intent menuIntent = new Intent(this, MenuActivity.class);
